@@ -6,38 +6,64 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      backgroundColor: Colors.white,
+      child: Column(
         children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text(
-              'Drawer Header',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
+          Container(
+            height: 200,
+            decoration: const BoxDecoration(
+                color: Colors.indigo,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 5.0,
+                  ),
+                ]),
+            margin: EdgeInsets.zero,
+            padding: EdgeInsets.zero,
+            child: const Center(
+              child: Text(
+                'Guido Olguin',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5,
+                ),
               ),
             ),
           ),
-          ListTile(
-            title: const Text('Item 1'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero,
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.person_outline),
+                  title: const Text('View Profile'),
+                  onTap: () {
+                    // Add your logic here
+                  },
+                ),
+                ListTile(
+                  leading: const Icon(Icons.card_giftcard_outlined),
+                  title: const Text('Share App'),
+                  onTap: () {},
+                ),
+                // Add more ListTiles if needed
+              ],
+            ),
           ),
-          ListTile(
-            title: const Text('Item 2'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
+          Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            child: const ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: null,
+            ),
           ),
         ],
       ),
