@@ -20,15 +20,10 @@ class HomeScreen extends ConsumerWidget {
             child: CustomAppBar(),
           ),
         ),
+        body: HomeScreenBody(),
         drawer: const CustomDrawer(),
-        body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              // Navigate to the next screen
-            },
-            child: const Text("Go to the next screen"),
-          ),
-        ),
-        bottomNavigationBar: const CustomBottomNavigation());
+        bottomNavigationBar: const CustomBottomNavigation()
+
+      );
   }
 }
