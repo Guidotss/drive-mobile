@@ -6,17 +6,16 @@ class CustomBottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.widgets_outlined), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list_alt_outlined), label: "Expenses"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.credit_card_outlined), label: "Incomes"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined), label: "Settings")
-        ],
-        type: BottomNavigationBarType.fixed,
-      ); 
+      items: const [
+        BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.star_border_outlined), label: "Favorites"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.share_outlined), label: "Shared"),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.file_copy_rounded), label: "Files"),
+      ],
+      type: BottomNavigationBarType.fixed,
+    );
   }
 }

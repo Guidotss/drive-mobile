@@ -9,25 +9,26 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-     final GlobalKey<ScaffoldState> scaffoldKey = ref.watch(drawerKeyProvider);
+    final GlobalKey<ScaffoldState> scaffoldKey = ref.watch(drawerKeyProvider);
 
     return Scaffold(
         key: scaffoldKey,
         appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(60),
-          child: CustomAppBar(),
+          preferredSize: Size.fromHeight(70),
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: CustomAppBar(),
+          ),
         ),
         drawer: const CustomDrawer(),
-      
         body: Center(
           child: ElevatedButton(
             onPressed: () {
               // Navigate to the next screen
-            }, 
+            },
             child: const Text("Go to the next screen"),
           ),
         ),
-        bottomNavigationBar: const CustomBottomNavigation()
-      );
+        bottomNavigationBar: const CustomBottomNavigation());
   }
 }

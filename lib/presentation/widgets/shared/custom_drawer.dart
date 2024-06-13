@@ -42,15 +42,34 @@ class CustomDrawer extends StatelessWidget {
               padding: EdgeInsets.zero,
               children: [
                 ListTile(
-                  leading: const Icon(Icons.person_outline),
-                  title: const Text('View Profile'),
-                  onTap: () {
-                    // Add your logic here
-                  },
+                  leading: const Icon(Icons.punch_clock_outlined),
+                  title: const Text('Recents'),
+                  onTap: () {},
                 ),
                 ListTile(
-                  leading: const Icon(Icons.card_giftcard_outlined),
-                  title: const Text('Share App'),
+                  leading: const Icon(Icons.file_copy_outlined),
+                  title: const Text('Your Files'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  title: const Text("Recycle Bin"),
+                  leading: const Icon(Icons.delete),
+                  onTap: () {},
+                ),
+                const Divider(),
+                ListTile(
+                  leading: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: const Text("Your Profile"),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.help),
+                  title: const Text('Help'),
                   onTap: () {},
                 ),
                 // Add more ListTiles if needed

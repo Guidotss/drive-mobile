@@ -15,23 +15,107 @@ class CustomAppBar extends ConsumerWidget {
     }
 
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: openDrawer,
-      ),
-      title: const Center(
-        child: Text("Dashboard",
-            style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.w500, letterSpacing: 0.2)),
-      ),
+      title: const Text('Search...',
+          style: TextStyle(color: Colors.grey, fontSize: 20)),
       actions: [
         IconButton(
-          icon: const Icon(Icons.notifications),
+          icon: const Icon(Icons.search),
           onPressed: () {
-            // Open the notifications
+            showSearch(
+              context: context,
+              delegate: CustomSearchDelegate(),
+            );
           },
-        )
+        ),
       ],
+    );
+  }
+}
+
+class CustomSearchDelegate extends SearchDelegate {
+  final List<String> data = [
+    "Flutter",
+    "Dart",
+    "React",
+    "Angular",
+    "Vue",
+    "Svelte",
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "Java",
+    "Kotlin",
+    "Swift",
+    "Objective-C",
+    "C#",
+    "C++",
+    "PHP",
+    "Ruby",
+    "Go",
+    "Rust",
+  ];
+
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    final List<String> results = data
+        .where((element) => element.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+
+    return ListView.builder(
+      itemCount: results.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(results[index]),
+          onTap: () {
+            close(context, results[index]);
+          },
+        );
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    final List<String> suggestions = query.isEmpty
+        ? data
+        : data
+            .where((element) =>
+                element.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+
+    return ListView.builder(
+      itemCount: suggestions.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(suggestions[index]),
+          onTap: () {
+            query = suggestions[index];
+            showResults(context);
+          },
+        );
+      },
     );
   }
 }
